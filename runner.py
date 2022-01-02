@@ -1,6 +1,7 @@
 import pygame
 import sys
 import time
+from os.path import exists
 
 import tictactoe as ttt
 
@@ -13,9 +14,14 @@ white = (255, 255, 255)
 
 screen = pygame.display.set_mode(size)
 
-mediumFont = pygame.font.Font("OpenSans-Regular.ttf", 28)
-largeFont = pygame.font.Font("OpenSans-Regular.ttf", 40)
-moveFont = pygame.font.Font("OpenSans-Regular.ttf", 60)
+if exists("OpenSans-Regular.ttf"):
+    mediumFont = pygame.font.Font("OpenSans-Regular.ttf", 28)
+    largeFont = pygame.font.Font("OpenSans-Regular.ttf", 40)
+    moveFont = pygame.font.Font("OpenSans-Regular.ttf", 60)
+else:
+    mediumFont = pygame.font.SysFont("OpenSans-Regular.ttf", 28)
+    largeFont = pygame.font.SysFont("OpenSans-Regular.ttf", 40)
+    moveFont = pygame.font.SysFont("OpenSans-Regular.ttf", 60)
 
 user = None
 board = ttt.initial_state()
